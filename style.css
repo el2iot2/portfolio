@@ -263,3 +263,7 @@ p {
 #contactBody a {
     text-decoration: none;
 }
+
+strong {
+    color: teal;
+}
