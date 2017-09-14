@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Soren Baird - Portfolio</title>
+</head>
+<link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
+<style>
+    * {
+        font-family: 'Anton', Sans-Serif;
+    }
+
+    body {
+        margin: 0;
+        height: 100vh;
+        background: linear-gradient(#161B1E, #000000);
+        overflow: hidden;
+    }
+
+    .cube-container {
+        display: flex;
+        perspective: 1000px;
+        justify-content: center;
+        align-content: center;
+    }
+
+    .cube {
+        -webkit-transform-style: preserve-3d;
+        -moz-transform-style: preserve-3d;
+        -ms-transform-style: preserve-3d;
+        transform-style: preserve-3d;
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        transition: 5s;
+    }
+
+    .cubeFace {
+        width: 100px;
+        height: 100px;
+        background-color: #841B19;
+        border: 3px solid black;
+        color: white;
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .back {
+        transform: translate3d(0, 0, -50px) rotateY(180deg);
+    }
+
+    .front {
+        transform: translate3d(0, 0, 50px);
+    }
+
+    .left {
+        transform: translate3d(-50px, 0, 0) rotateY(-90deg);
+    }
+
+    .right {
+        transform: translate3d(50px, 0, 0) rotateY(90deg);
+    }
+
+    .top {
+        transform: translate3d(0, -50px, 0) rotateX(90deg);
+    }
+
+    .bottom {
+        transform: translate3d(0, 50px, 0) rotateX(90deg);
+    }
+
+    .treeTriangle {
+        position: absolute;
+        width: 0;
+        height: 0;
+    }
+
+    .tree {
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: flex;
+        justify-content: center;
+    }
+
+    .tree-container {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        height: 55vh;
+        width: 100vw;
+    }
+
+</style>
+<body>
+
+<div class="cube-container">
+    <div class="cube">
+        <div class="cubeFace front">Home</div>
+        <div class="cubeFace left">About</div>
+        <div class="cubeFace right">Work</div>
+        <div class="cubeFace back">Skills</div>
+        <div class="cubeFace bottom"></div>
+        <div class="cubeFace top">Contact</div>
+    </div>
+</div>
+<div class="tree-container">
+
+</div>
+</body>
+<script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+<script>
+    initializer();
+
+    function initializer() {
+        console.log('I\'m loaded!');
+        var cube = document.getElementsByClassName('cube')[0];
+        cube.onclick = spinCube;
+    }
+
+    function spinCube() {
+        console.log('Cube Clicked!');
+        this.style.transform = 'rotateY(360deg)';
+    }
+
+    function makeTrees(num) {
+        let percentage = Math.floor(100 / num);
+        for (let i = 0; i < 100; i += percentage) {
+            let xPosition = Math.floor(Math.random() * percentage) + i;
+            let initMeasurement = Math.ceil(Math.random() * 10) + 5;
+            let secondMeasurement = Math.floor(initMeasurement * 1.2);
+            let thirdMeasurement = Math.floor(initMeasurement * 1.4);
+            let treecolor = `rgb(${initMeasurement * 2}, ${initMeasurement * 2}, ${initMeasurement * 2})`;
+            let tree = $('<div>').addClass('tree').css({
+                'top': `${initMeasurement}vmin`,
+                'z-index': `${initMeasurement}`,
+                'left': `${xPosition}vw`
+            });
+            let topTriangle = $('<div>').addClass('treeTriangle').css({
+                'border-bottom': `${initMeasurement}vmin solid ${treecolor}`,
+                'border-left': `${initMeasurement}vmin solid transparent`,
+                'border-right': `${initMeasurement}vmin solid transparent`,
+                'top': '0'
+            });
+            let middleTriangle = $('<div>').addClass('treeTriangle').css({
+                'border-bottom': `${secondMeasurement}vmin solid ${treecolor}`,
+                'border-left': `${secondMeasurement}vmin solid transparent`,
+                'border-right': `${secondMeasurement}vmin solid transparent`,
+                'top': `${Math.floor(secondMeasurement / 2)}vmin`
+            });
+            let bottomTriangle = $('<div>').addClass('treeTriangle').css({
+                'border-bottom': `${thirdMeasurement}vmin solid ${treecolor}`,
+                'border-left': `${thirdMeasurement}vmin solid transparent`,
+                'border-right': `${thirdMeasurement}vmin solid transparent`,
+                'top': `${Math.floor(secondMeasurement / 2) + Math.floor(thirdMeasurement / 2)}vmin`
+            });
+            let treeTrunk = $('<div>').css({
+                'position':'absolute',
+                'width':`${initMeasurement / 2}vmin`,
+                'height':`${initMeasurement}vmin`,
+                'top':`${initMeasurement * 2.2}vmin`,
+                'background-color': treecolor
+            });
+            $(tree).append(topTriangle, middleTriangle, bottomTriangle, treeTrunk);
+            $('.tree-container').append(tree);
+        }
+    }
+
+</script>
+</html>

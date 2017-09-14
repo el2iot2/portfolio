@@ -1,0 +1,265 @@
+body {
+    margin: 0;
+    font-size: 0;
+}
+
+body > * {
+    font-family: sans-serif;
+    font-size: 1rem;
+}
+
+.gear {
+    position: fixed;
+    z-index: 1;
+    /*opacity: .5;*/
+    animation: rotate 1s linear infinite;
+    animation-play-state: paused;
+}
+
+#gear1 {
+    height: 20vmin;
+    top: -10vmin;
+    left: -10vmin;
+}
+
+#gear2 {
+    height: 20vmin;
+    top: -10vmin;
+    right: -10vmin;
+}
+
+@keyframes rotate {
+    0% {transform: rotate(0deg)}
+    100% {transform: rotate(360deg)}
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+h1 {
+    font-family: 'Lobster', sans-serif;
+    font-size: 4em;
+    z-index: 1;
+}
+
+h3 {
+    color: teal;
+}
+
+p {
+    color: black;
+}
+
+/*.site-wrapper {*/
+    /*position: relative;*/
+    /*top: 0;*/
+    /*width: 100%;*/
+    /*overflow: hidden;*/
+/*}*/
+
+.welcomeHeader {
+    height: 100vh;
+    position: relative;
+    background-image: url(assets/images/junglebackground.jpg);
+    background-size: 275vh;
+    background-position: 50% 0;
+}
+
+.welcomeHeader::before {
+    content: '';
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: absolute;
+    background-color: #222;
+    opacity: .9;
+}
+
+.welcomeMessage {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    color: white;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+    align-items: center;
+}
+
+.welcomeMessage > img {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 75%;
+}
+
+.welcomeMessage > p {
+    font-weight: bold;
+    text-transform: uppercase;
+    color: teal;
+}
+
+.section1, .section2, .section3 {
+    position: relative;
+    display: flex;
+    width: 100%;
+}
+
+.leftColumn, .rightColumn {
+    position: relative;
+    display: inline-block;
+    width: 50%;
+}
+
+.leftColumn > p {
+    color: black;
+}
+
+.leftColumn {
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.rightColumn {
+    left: 50%;
+}
+
+#aboutTitle, #contactTitle, #workTitle {
+    height: 100vh;
+    position: absolute;
+    top: 0;
+}
+
+#aboutTitle {
+    background-color: teal;
+    color: white;
+}
+
+#aboutTitle > p:first-child {
+    color: teal;
+}
+
+#aboutTitle > p:last-child, #aboutTitle a {
+    color: white;
+}
+
+#aboutBody, #contactBody {
+    padding: 10vmin;
+    min-height: 100vh;
+    width: 50%;
+    box-sizing: border-box;
+}
+
+#aboutBody > *:first-child, #contactBody > *:first-child {
+    margin-top: 0;
+}
+
+#workTitle {
+    background-color: white;
+    color: #222;
+}
+
+#workTitle > p:first-child {
+    color: white;
+}
+
+#workTitle > p:last-child, #workTitle a {
+    color: #222;
+}
+
+#workBody {
+    background-color: teal;
+}
+
+.applicationInfo {
+    height: 100vh;
+    background-size: 350vh;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    transition: 5s;
+}
+
+.applicationInfo > div {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    color: #222;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    transition: 5s;
+    background-color: rgba(255, 255, 255, .5);
+    box-sizing: border-box;
+    position: absolute;
+}
+
+.applicationInfo:hover {
+    background-size: 375vh;
+    background-position: center bottom;
+}
+
+.applicationInfo:hover > div {
+    background-color: rgba(255, 255, 255, 0);
+}
+
+.applicationInfo h3 {
+    color: #222;
+}
+
+.applicationInfo h1 {
+    margin: 0;
+    padding: 0 3vmax;
+    font-size: 2em;
+}
+
+#endless-gallery {
+    background-image: url(assets/images/endless_gallery.jpg);
+}
+
+#emoji-crush {
+    background-image: url(assets/images/emoji_crush.jpg);
+}
+
+#inventor-memory-match {
+    background-image: url(assets/images/inventor_memory_match.jpg);
+}
+
+#contactTitle {
+    background-color: #222;
+    color: white;
+}
+
+#contactTitle > p:last-child, #contactTitle a {
+    color: teal;
+}
+
+#contactTitle > p:first-child {
+    color: #222;
+}
+
+#contactBody {
+    height: 100vh;
+}
+
+#contactBody img {
+    height: 5vmin;
+    width: 5vmin;
+}
+
+#contactBody a {
+    text-decoration: none;
+}
